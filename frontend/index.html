@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acity Café</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Prefer the Render-hosted backend; fall back to localhost if Render is unavailable -->
+  <script>
+    // Default API backend (can be overridden in the browser for testing)
+    window.__API_BASE__ = window.__API_BASE__ || 'https://foodordering-system-m85g.onrender.com';
+  </script>
   <script src="js/script.js" defer></script>
 </head>
 <body>

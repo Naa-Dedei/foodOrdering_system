@@ -22,9 +22,47 @@ function getApiBase() {
   return "";
 }
 
+function getApiCandidates() {
+  const renderUrl = (window.__API_BASE__ && String(window.__API_BASE__).trim()) || "https://foodordering-system-m85g.onrender.com";
+  const localUrl = "http://localhost:3000";
+  // Prefer Render, then local as fallback
+  return [renderUrl, localUrl];
+}
+
+async function apiFetch(path, options = {}) {
+  const candidates = getApiCandidates();
+
+  // Try each candidate in order until we get a successful (2xx) response.
+  // If we get a client error (4xx), do not fall back.
+  let lastErr = null;
+  for (const base of candidates) {
+    const url = `${base.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
+    try {
+      const res = await fetch(url, options);
+      if (res.ok) return res;
+      // If client error, throw and do not try next backend
+      if (res.status >= 400 && res.status < 500) {
+        const data = await res.json().catch(() => ({}));
+        const err = new Error(data.error || `Request failed (${res.status})`);
+        err.status = res.status;
+        throw err;
+      }
+      // Server error, try next candidate
+      lastErr = new Error(`Server error (${res.status})`);
+    } catch (err) {
+      // Network error or our thrown client error
+      lastErr = err;
+      // If client error, rethrow immediately to caller
+      if (err?.status && err.status >= 400 && err.status < 500) throw err;
+      // Otherwise try next candidate
+    }
+  }
+
+  throw lastErr || new Error("Network error");
+}
+
 async function fetchMenu() {
-  const res = await fetch(`${getApiBase()}/api/menu`);
-  if (!res.ok) throw new Error(`Failed to load menu (${res.status})`);
+  const res = await apiFetch(`/api/menu`);
   const data = await res.json();
   return Array.isArray(data.items) ? data.items : [];
 }
@@ -56,7 +94,7 @@ function populateItemSelect(selectEl, items) {
 }
 
 async function submitOrder(payload) {
-  const res = await fetch(`${getApiBase()}/api/orders`, {
+  const res = await apiFetch(`/api/orders`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
