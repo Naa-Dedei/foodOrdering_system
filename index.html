@@ -1,1 +1,159 @@
-<!-- Root redirect removed: site is now served from the `docs/` folder. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acity Café</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Prefer the Render-hosted backend; fall back to localhost if Render is unavailable -->
+  <script>
+    // Default API backend (can be overridden in the browser for testing)
+    window.__API_BASE__ = window.__API_BASE__ || 'https://foodordering-system-m85g.onrender.com';
+  </script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="cafe-profile">
+      <img src="images/coffee.jpg" alt="Acity Café Logo">
+    </div>
+    <h1>Acity Café</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#order">Order</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="home" id="home">
+    <h2>Experience Acity's very own fusion cuisine!</h2>
+    <p>What are you waiing for? 0rder now!</p>
+    <button onclick="document.querySelector('#menu').scrollIntoView({behavior: 'smooth'});">View Menu</button>
+  </section>
+
+
+  <section id="menu">
+    <h2>Menu</h2>
+    <p></p>
+    
+    <h2>Breakfast & Sweet Tings *wink*</h2>
+    <div class="menu-container">
+      <article class="menu-item" data-id="cappuccino" data-price-cents="350">
+        <img src="images/coffee.jpg" alt="Cappuccino">
+        <h3>Cappuccino</h3>
+        <p class="price">$3.50</p>
+        <p>Rich espresso with steamed milk and foam.</p>
+      </article>
+
+      <article class="menu-item" data-id="croissant" data-price-cents="200">
+        <img src="images/croissant.jpg" alt="Butter Croissant">
+        <h3>Butter Croissant</h3>
+        <p class="price">$2.00</p>
+        <p>Flaky and buttery, baked fresh daily.</p>
+      </article>
+
+      <article class="menu-item" data-id="smoothie" data-price-cents="400">
+        <img src="images/smoothie.jpg" alt="Strawberry Smoothie">
+        <h3>Strawberry Smoothie</h3>
+        <p class="price">$4.00</p>
+        <p>Refreshing blend of strawberries and yogurt.</p>
+      </article>
+
+      <article class="menu-item" data-id="chocolate-muffin" data-price-cents="250">
+        <img src="images/pastry.jpg" alt="Chocolate Muffin">
+        <h3>Chocolate Muffin</h3>
+        <p class="price">$2.50</p>
+        <p>Soft, rich muffin loaded with chocolate chips.</p>
+      </article>
+
+      <article class="menu-item" data-id="french-toast" data-price-cents="200">
+        <img src="images/toast.jpg" alt="French Toast">
+        <h3>French Toast</h3>
+        <p class="price">$2.00</p>
+        <p>Pan friend toast topped with strawberries, blueberries and powdered sugar.</p>
+      </article>
+
+      <article class="menu-item" data-id="lemon-cake" data-price-cents="200">
+        <img src="images/cake.jpg" alt="Lemon cake ">
+        <h3>Lemon cake </h3>
+        <p class="price">$2.00</p>
+        <p>Mosit,tart lemon cake.</p>
+      </article>
+
+      <p></p>
+      <h2>Aduanipa!</h2>
+      <article class="menu-item" data-id="banku-tilapia" data-price-cents="500">
+        <img src="images/banku.jpg" alt="Banku and Tilapia">
+        <h3>Banku and Tilapia</h3>
+        <p class="price">$5.00</p>
+        <p>Soft banku and grilled tilapia served with spicy green and black sauce.</p>
+      </article>
+
+      <article class="menu-item" data-id="jollof-chicken" data-price-cents="450">
+        <img src="images/jollof.jpg" alt="Jollof and Chicken">
+        <h3>Jollof and Chicken </h3>
+        <p class="price">$4.50</p>
+        <p>Ghanian jollof rice with grilled chicken.</p>
+      </article>
+
+      <article class="menu-item" data-id="lasanga" data-price-cents="500">
+        <img src="images/lasanga.jpg" alt="Lasanga">
+        <h3>Lasanga</h3>
+        <p class="price">$5.00</p>
+        <p>Tasty, cheesy goodness!</p>
+      </article>
+
+      <article class="menu-item" data-id="spaghetti-beef" data-price-cents="600">
+        <img src="images/pasta.jpg" alt="spaghetti with beef tomato sauce">
+        <h3>Spaghetti with beef tomato sauce</h3>
+        <p class="price">$6.00</p>
+        <p>Italian spaghetti ich, hearty sauce, packed with ground beef, tomatoes, garlic, and Italian herbs.</p>
+      </article>
+
+      <article class="menu-item" data-id="mac-n-cheese" data-price-cents="500">
+        <img src="images/man_n_cheese.jpg" alt="Mac 'n' Cheese">
+        <h3>Mac 'n' Cheese</h3>
+        <p class="price">$5.00</p>
+        <p>Tini's 3 cheese thanksgiving mac and cheese.(psst! We'll put her tiktok in the contact section. I got you!)</p>
+      </article>
+
+
+
+    </div>
+  </section>
+
+  <section id="order">
+    <h2>Place Your Order</h2>
+    <form id="order-form" novalidate>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="item">Select Item:</label>
+      <select id="item" name="itemId" required>
+        <option value="">--Choose an item--</option>
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" min="1" required>
+
+      <button type="submit">Submit Order</button>
+      <div id="order-status" class="form-status" role="status" aria-live="polite"></div>
+    </form>
+
+  </section>
+
+  <footer id="contact">
+    <p>Contact us: info@AcityCafé.com | +233 550 283 771</p>
+    <p>Follow us on Instagram @AcityCafeGH</p>
+    <p>Tini's tiktok: tineyounger</p>
+    <p>© 2025 Acity Café. All rights reserved.</p>
+<!-- <hi></hi> -->
+  </footer>
+</body>
+</html>
