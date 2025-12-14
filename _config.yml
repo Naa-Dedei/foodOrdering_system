@@ -6,3 +6,17 @@ exclude:
 markdown: kramdown
 kramdown:
   input: GFM
+
+# Helpful site settings (leave blank for branch-root Pages)
+# If you are publishing as a project site (username.github.io/<repo>), set:
+#   baseurl: "/your-repo-name"
+# and optionally set the public URL:
+#   url: "https://your-username.github.io"
+baseurl: ""
+url: ""
+
+# If you ever want to enable Jekyll processing (remove the .nojekyll file),
+# ensure Jekyll copies the `frontend/` folder by including it here.
+# This is optional and only needed when Jekyll is enabled.
+include:
+  - frontend
