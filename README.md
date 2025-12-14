@@ -5,9 +5,8 @@ This project is a simple café site (`frontend/`) served by a small Node/Express
 ### Deployment links
 
 - **Backend (Render)**: `https://foodordering-system-m85g.onrender.com`
-- **Database (Render Postgres)**: (keep private; don’t publish credentials)
-- **Frontend (if deployed separately)**: `PASTE_FRONTEND_URL_HERE`
-- **Repository**: `PASTE_GITHUB_REPO_URL_HERE`
+- **Frontend (if deployed separately)**: `https://naa-dedei.github.io/foodOrdering_system/`
+- **Repository**: `https://github.com/Naa-Dedei/foodOrdering_system.git`
 
 ### Run locally
 
