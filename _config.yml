@@ -1,0 +1,8 @@
+# Minimal _config.yml to help avoid GitHub Pages/Jekyll surprises
+# This repo primarily serves static assets via the `docs/` folder.
+exclude:
+  - node_modules
+  - .env
+markdown: kramdown
+kramdown:
+  input: GFM
